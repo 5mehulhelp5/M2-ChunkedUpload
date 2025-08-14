@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <update handle="editor"/>
+    <update handle="catalog_product_form"/>
+
+    <head>
+       <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+    </head>
+    <body>
+        <referenceBlock name="catalog.product.edit.tab.gallery">
+            <arguments>
+                <argument name="uploaderSettings" xsi:type="array">
+                    <!-- Chunk size + retry logic -->
+                    <item name="chunk_size" xsi:type="string">1mb</item>
+                    <item name="max_retries" xsi:type="number">3</item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

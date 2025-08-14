@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- Override core gallery uploader settings via JS mixin -->
+    <type name="Magento\Catalog\Block\Adminhtml\Product\Edit\Tab\Gallery">
+        <arguments>
+            <argument name="jsLayout" xsi:type="array">
+                <item name="components" xsi:type="array">
+                    <item name="gallery-uploader" xsi:type="array">
+                        <item name="component" xsi:type="string">Merlin_ChunkedUpload/js/chunked-gallery-uploader</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\MediaStorage\Model\File\Uploader">
+            <plugin name="merlin_stream_merge"
+                type="Merlin\ChunkedUpload\Plugin\UploaderStreamMergePlugin"/>
+    </type>
+
+    <!-- Preference to override the Upload controller for manual resize -->
+    <preference
+        for="Magento\Catalog\Controller\Adminhtml\Product\Gallery\Upload"
+        type="Merlin\ChunkedUpload\Controller\Adminhtml\Product\Gallery\Upload" />
+</config>

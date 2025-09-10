@@ -1,0 +1,14 @@
+{
+  "name": "merlin/module-chunkedupload",
+  "description": "Merlin ChunkedUpload - upload larger files quickly",
+  "type": "magento2-module",
+  "license": "proprietary",
+  "require": {
+    "php": ">=8.1",
+    "magento/framework": "*"
+  },
+  "autoload": {
+    "files": ["registration.php"],
+    "psr-4": { "Merlin\\ChuckedUpload\\": "" }
+  }
+}
